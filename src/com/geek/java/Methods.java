@@ -6,6 +6,7 @@ public class Methods {
         System.out.println("checkSum = " + checkSum(111, 6));
         showSignOfNumber(-99);
         System.out.println("checkSignOfNumber = " + checkSignOfNumber(-99));
+        showStringWithRepeats("Ops...", 7);
     }
 
     private static boolean checkSum(int a, int b){
@@ -28,6 +29,12 @@ public class Methods {
             return false;
         }else {
             return true;
+        }
+    }
+
+    private static void showStringWithRepeats(String str, int repeats){
+        for (int i = 1; i <= repeats; i++){
+            System.out.println(">> " + str);
         }
     }
 
