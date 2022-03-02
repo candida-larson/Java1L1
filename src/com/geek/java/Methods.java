@@ -5,6 +5,7 @@ public class Methods {
     public static void main(String[] args) {
         System.out.println("checkSum = " + checkSum(111, 6));
         showSignOfNumber(-99);
+        System.out.println("checkSignOfNumber = " + checkSignOfNumber(-99));
     }
 
     private static boolean checkSum(int a, int b){
@@ -20,6 +21,14 @@ public class Methods {
             System.out.println("Отрицательное");
         }
 
+    }
+
+    private static boolean checkSignOfNumber(int number){
+        if( number >= 0 ){
+            return false;
+        }else {
+            return true;
+        }
     }
 
 
