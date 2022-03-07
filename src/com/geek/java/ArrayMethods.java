@@ -6,8 +6,12 @@ public class ArrayMethods {
     public static void main(String[] args) {
 
         System.out.println("Task #1:");
-        byte[] inputBytes = {0, 1, 1, 0, 1, 1};
-        System.out.println(Arrays.toString(revertArray(inputBytes)));
+        byte[] inputBytesForRevert = {0, 1, 1, 0, 1, 1};
+        System.out.println(Arrays.toString(revertArray(inputBytesForRevert)));
+
+        System.out.println("Task #2:");
+        int[] inputBytesForFill = new int[100];
+        System.out.println(Arrays.toString(fillArray(inputBytesForFill)));
 
     }
 
@@ -18,6 +22,13 @@ public class ArrayMethods {
             } else {
                 arr[i] = 0;
             }
+        }
+        return arr;
+    }
+
+    private static int[] fillArray(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = i + 1;
         }
         return arr;
     }
