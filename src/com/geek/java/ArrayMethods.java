@@ -17,6 +17,13 @@ public class ArrayMethods {
         int[] inputBytesForMultiply = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         System.out.println(Arrays.toString(multiplyArrayElement(inputBytesForMultiply, 6)));
 
+        System.out.println("Task #4:");
+        int squareSize = 10;
+        int[][] squareArr = squareWithDiagonals(squareSize);
+        for (int i = 0; i < squareArr.length; i++) {
+            System.out.println(">> " + Arrays.toString(squareArr[i]));
+        }
+
     }
 
     private static byte[] revertArray(byte[] arr) {
@@ -45,5 +52,26 @@ public class ArrayMethods {
         }
         return arr;
     }
+
+    private static int[][] squareWithDiagonals(int squareSize) {
+        int[][] squareArr = new int[squareSize][squareSize];
+
+        for (int i = 0; i < squareSize; i++) {
+            for (int j = 0; j < squareSize; j++) {
+
+                if (i == j) {
+                    squareArr[i][j] = 1;
+                }
+
+                if (i + j == squareSize - 1) {
+                    squareArr[i][j] = 1;
+                }
+
+            }
+        }
+
+        return squareArr;
+    }
+
 
 }
