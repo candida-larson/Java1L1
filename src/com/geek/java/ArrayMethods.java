@@ -24,6 +24,9 @@ public class ArrayMethods {
             System.out.println(">> " + Arrays.toString(squareArr[i]));
         }
 
+        System.out.println("Task #5:");
+        System.out.println(Arrays.toString(createFilledArray(3, 7)));
+
     }
 
     private static byte[] revertArray(byte[] arr) {
@@ -71,6 +74,14 @@ public class ArrayMethods {
         }
 
         return squareArr;
+    }
+
+    private static int[] createFilledArray(int len, int initialValue) {
+        int[] arr = new int[len];
+        for (int i = 0; i < len; i++) {
+            arr[i] = initialValue;
+        }
+        return arr;
     }
 
 
