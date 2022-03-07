@@ -32,6 +32,10 @@ public class ArrayMethods {
         System.out.println(">> min element = " + minArrayElement(inputBytesForSearch));
         System.out.println(">> max element = " + maxArrayElement(inputBytesForSearch));
 
+        System.out.println("Task #7:");
+        int[] arrayForBalancerChecker = {1, 1, 1, 2, 1};
+        System.out.println("isBalancedArray = " + isBalancedArray(arrayForBalancerChecker));
+
     }
 
     private static byte[] revertArray(byte[] arr) {
@@ -109,5 +113,30 @@ public class ArrayMethods {
         return max;
     }
 
+    private static boolean isBalancedArray(int[] arr) {
+
+        if (arr.length < 2) {
+            return false;
+        }
+
+        for (int borderIndex = 0; borderIndex < arr.length - 1; borderIndex++) {
+            int sumOnLeft = 0;
+            int sumOnRight = 0;
+
+            for (int i = 0; i < arr.length; i++) {
+                if (i <= borderIndex) {
+                    sumOnLeft += arr[i];
+                } else {
+                    sumOnRight += arr[i];
+                }
+            }
+
+            if (sumOnLeft == sumOnRight) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 }
