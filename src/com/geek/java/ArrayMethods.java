@@ -33,7 +33,7 @@ public class ArrayMethods {
         System.out.println(">> max element = " + maxArrayElement(inputBytesForSearch));
 
         System.out.println("Task #7:");
-        int[] arrayForBalancerChecker = {1, 1, 1, 2, 1};
+        int[] arrayForBalancerChecker = {2, 2, 2, 1, 2, 2, 10, 1};
         System.out.println("isBalancedArray = " + isBalancedArray(arrayForBalancerChecker));
 
     }
@@ -114,22 +114,19 @@ public class ArrayMethods {
     }
 
     private static boolean isBalancedArray(int[] arr) {
-
         if (arr.length < 2) {
             return false;
         }
 
-        for (int borderIndex = 0; borderIndex < arr.length - 1; borderIndex++) {
-            int sumOnLeft = 0;
-            int sumOnRight = 0;
+        int sumOnLeft = 0;
+        int sumOnRight = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sumOnRight += arr[i];
+        }
 
-            for (int i = 0; i < arr.length; i++) {
-                if (i <= borderIndex) {
-                    sumOnLeft += arr[i];
-                } else {
-                    sumOnRight += arr[i];
-                }
-            }
+        for (int borderIndex = 0; borderIndex < arr.length - 1; borderIndex++) {
+            sumOnLeft += arr[borderIndex];
+            sumOnRight -= arr[borderIndex];
 
             if (sumOnLeft == sumOnRight) {
                 return true;
