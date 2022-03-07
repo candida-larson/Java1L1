@@ -27,6 +27,11 @@ public class ArrayMethods {
         System.out.println("Task #5:");
         System.out.println(Arrays.toString(createFilledArray(3, 7)));
 
+        System.out.println("Task #6:");
+        int[] inputBytesForSearch = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1, -11, -56, -78, 0, -66, -5689, 117};
+        System.out.println(">> min element = " + minArrayElement(inputBytesForSearch));
+        System.out.println(">> max element = " + maxArrayElement(inputBytesForSearch));
+
     }
 
     private static byte[] revertArray(byte[] arr) {
@@ -82,6 +87,26 @@ public class ArrayMethods {
             arr[i] = initialValue;
         }
         return arr;
+    }
+
+    private static int minArrayElement(int[] arr) {
+        int min = arr[0];
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        return min;
+    }
+
+    private static int maxArrayElement(int[] arr) {
+        int min = arr[0];
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > min) {
+                min = arr[i];
+            }
+        }
+        return min;
     }
 
 
