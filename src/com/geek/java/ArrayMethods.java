@@ -36,6 +36,10 @@ public class ArrayMethods {
         int[] arrayForBalancerChecker = {2, 2, 2, 1, 2, 2, 10, 1};
         System.out.println("isBalancedArray = " + isBalancedArray(arrayForBalancerChecker));
 
+        System.out.println("Task #7:");
+        int[] arrayForShift = {1, 2, 3, 4};
+        System.out.println("circularArrayShift = " + Arrays.toString(circularArrayShift(arrayForShift, -1)));
+
     }
 
     private static byte[] revertArray(byte[] arr) {
@@ -135,5 +139,47 @@ public class ArrayMethods {
 
         return false;
     }
+
+    private static int[] circularArrayShift(int[] arr, int n) {
+
+        boolean isLeftShift = false;
+        int step = n;
+        if (n < 0) {
+            isLeftShift = true;
+            step *= -1;
+        }
+
+        while (step-- != 0) {
+            if (isLeftShift) {
+
+                for (int i = arr.length - 1, prev = 0, prevCopy; i >= 0; i--) {
+                    prevCopy = prev;
+                    prev = arr[i];
+                    if (i == arr.length - 1) {
+                        arr[arr.length - 1] = arr[0];
+                    } else {
+                        arr[i] = prevCopy;
+                    }
+                }
+
+            } else {
+
+                for (int i = 0, prev = 0, prevCopy; i < arr.length; i++) {
+                    prevCopy = prev;
+                    prev = arr[i];
+                    if (i == 0) {
+                        arr[0] = arr[arr.length - 1];
+                    } else {
+                        arr[i] = prevCopy;
+                    }
+                }
+
+            }
+
+        }
+
+        return arr;
+    }
+
 
 }
