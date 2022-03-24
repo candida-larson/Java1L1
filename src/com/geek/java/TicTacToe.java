@@ -176,17 +176,17 @@ public class TicTacToe {
         Random random = new Random();
 
         // the computer can make one move and win
-        if (isWasMoveToWin(true)) {
+        if (isWasComputerMoveToWin(true)) {
             return;
         }
 
         // block a person's winning move
-        if (isWasBlockingMove()) {
+        if (isWasBlockingHumanMoveByComputer()) {
             return;
         }
 
         // make such a move to draw a straight line to win
-        if (isWasMoveToWin(false)) {
+        if (isWasComputerMoveToWin(false)) {
             return;
         }
 
@@ -198,7 +198,7 @@ public class TicTacToe {
         MAP[x][y] = DOT_O;
     }
 
-    private static boolean isWasMoveToWin(boolean onlyFullLineLengthCheck) {
+    private static boolean isWasComputerMoveToWin(boolean onlyFullLineLengthCheck) {
         boolean wasMoveToWin = false;
         for (int lineLen = SIZE; lineLen >= 2; lineLen--) {
             if (wasMoveToWin) {
@@ -231,7 +231,7 @@ public class TicTacToe {
         return false;
     }
 
-    private static boolean isWasBlockingMove() {
+    private static boolean isWasBlockingHumanMoveByComputer() {
         boolean wasBlockingMove = false;
         for (int i = 0; i < SIZE; i++) {
             if (wasBlockingMove) {
