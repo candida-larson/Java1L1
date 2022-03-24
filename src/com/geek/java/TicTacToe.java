@@ -62,10 +62,7 @@ public class TicTacToe {
     }
 
     private static boolean isWinByRightDiagonalLine(char symbol, int lineLength) {
-        int solidLineLength;
-
-        // checking right diagonal line
-        solidLineLength = 0;
+        int solidLineLength = 0;
         for (int x = 0, y; x < SIZE; x++) {
             y = SIZE - x - 1;
             if (MAP[x][y] == symbol) {
@@ -81,10 +78,7 @@ public class TicTacToe {
     }
 
     private static boolean isWinByLeftDiagonalLine(char symbol, int lineLength) {
-        int solidLineLength;
-
-        // checking left diagonal line
-        solidLineLength = 0;
+        int solidLineLength = 0;
         for (int i = 0; i < SIZE; i++) {
             if (MAP[i][i] == symbol) {
                 solidLineLength++;
@@ -199,24 +193,15 @@ public class TicTacToe {
     }
 
     private static boolean isWasComputerMoveToWin(boolean onlyFullLineLengthCheck) {
-        boolean wasMoveToWin = false;
         for (int lineLen = SIZE; lineLen >= 2; lineLen--) {
-            if (wasMoveToWin) {
-                break;
-            }
             for (int i = 0; i < SIZE; i++) {
-                if (wasMoveToWin) {
-                    break;
-                }
                 for (int j = 0; j < SIZE; j++) {
                     if (MAP[i][j] == DOT_EMPTY) {
                         MAP[i][j] = DOT_O;
                         if (isWin(DOT_O, lineLen)) {
-                            wasMoveToWin = true;
-                            break;
-                        } else {
-                            MAP[i][j] = DOT_EMPTY;
+                            return true;
                         }
+                        MAP[i][j] = DOT_EMPTY;
                     }
                 }
             }
@@ -224,19 +209,11 @@ public class TicTacToe {
                 break;
             }
         }
-
-        if (wasMoveToWin) {
-            return true;
-        }
         return false;
     }
 
     private static boolean isWasBlockingHumanMoveByComputer() {
-        boolean wasBlockingMove = false;
         for (int i = 0; i < SIZE; i++) {
-            if (wasBlockingMove) {
-                break;
-            }
             for (int j = 0; j < SIZE; j++) {
                 // an empty field where
                 // a person could put a chip
@@ -245,15 +222,14 @@ public class TicTacToe {
                     MAP[i][j] = DOT_X;
                     if (isWin(DOT_X, SIZE)) {
                         MAP[i][j] = DOT_O;
-                        wasBlockingMove = true;
-                        break;
+                        return true;
                     } else {
                         MAP[i][j] = DOT_EMPTY;
                     }
                 }
             }
         }
-        return wasBlockingMove;
+        return false;
     }
 
     private static void printMapHeader() {
