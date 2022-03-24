@@ -14,8 +14,33 @@ public class TicTacToe {
 
     public static void main(String[] args) {
         initMap();
+        do {
+            printMap();
+            humanTurn();
+
+            if (isWin(DOT_X, SIZE)) {
+                System.out.println("Human win!");
+                break;
+            }
+
+            if (isMapFull()) {
+                System.out.println("Draw!");
+                break;
+            }
+
+            computerTurn();
+
+            if (isWin(DOT_O, SIZE)) {
+                System.out.println("Human win!");
+                break;
+            }
+
+            if (isMapFull()) {
+                System.out.println("Draw!");
+                break;
+            }
+        } while (true);
         printMap();
-        humanTurn();
     }
 
     private static void initMap() {
@@ -29,19 +54,99 @@ public class TicTacToe {
         printMapBody();
     }
 
-    private static boolean isWin(char symbol) {
-        return true;
+    private static boolean isWin(char symbol, int lineLength) {
+        if (isWinByVerticalLines(symbol, lineLength)) return true;
+        if (isWinByHorizontalLines(symbol, lineLength)) return true;
+        if (isWinByLeftDiagonalLine(symbol, lineLength)) return true;
+        return isWinByRightDiagonalLine(symbol, lineLength);
+    }
+
+    private static boolean isWinByRightDiagonalLine(char symbol, int lineLength) {
+        int solidLineLength;
+
+        // checking right diagonal line
+        solidLineLength = 0;
+        for (int x = 0, y; x < SIZE; x++) {
+            y = SIZE - x - 1;
+            if (MAP[x][y] == symbol) {
+                solidLineLength++;
+                if (solidLineLength >= lineLength) {
+                    return true;
+                }
+            } else {
+                solidLineLength = 0;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isWinByLeftDiagonalLine(char symbol, int lineLength) {
+        int solidLineLength;
+
+        // checking left diagonal line
+        solidLineLength = 0;
+        for (int i = 0; i < SIZE; i++) {
+            if (MAP[i][i] == symbol) {
+                solidLineLength++;
+                if (solidLineLength >= lineLength) {
+                    return true;
+                }
+            } else {
+                solidLineLength = 0;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isWinByHorizontalLines(char symbol, int lineLength) {
+        int solidLineLength;
+
+        // checking horizontal lines
+        for (int x = 0; x < SIZE; x++) {
+            solidLineLength = 0;
+            for (int y = 0; y < SIZE; y++) {
+                if (MAP[x][y] == symbol) {
+                    solidLineLength++;
+                    if (solidLineLength >= lineLength) {
+                        return true;
+                    }
+                } else {
+                    solidLineLength = 0;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean isWinByVerticalLines(char symbol, int lineLength) {
+        int solidLineLength;
+
+        // checking vertical lines
+        for (int y = 0; y < SIZE; y++) {
+            solidLineLength = 0;
+            for (int x = 0; x < SIZE; x++) {
+                if (MAP[x][y] == symbol) {
+                    solidLineLength++;
+                    if (solidLineLength >= lineLength) {
+                        return true;
+                    }
+                } else {
+                    solidLineLength = 0;
+                }
+            }
+        }
+        return false;
     }
 
     private static boolean isMapFull() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 if (MAP[i][j] == DOT_EMPTY) {
-                    return true;
+                    return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 
     private static void humanTurn() {
@@ -53,7 +158,7 @@ public class TicTacToe {
             x = scanner.nextInt() - 1;
             y = scanner.nextInt() - 1;
 
-            if (x < 0 || x > SIZE || y < 0 || y > SIZE) {
+            if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) {
                 System.out.println(">> Incorrect coordinate");
             } else if (MAP[x][y] != DOT_EMPTY) {
                 System.out.println(">> Сell is occupied");
