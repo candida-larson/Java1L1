@@ -27,5 +27,12 @@ public class TestCatPlate {
         for (Cat catItem : cats) {
             catItem.satietyInfo();
         }
+
+        // test increaseFood
+        System.out.println(">".repeat(32));
+        System.out.println(String.format("Food in bigPlate before increase = %s", bigPlate.getFood()));
+        bigPlate.increaseFood(100);
+        System.out.println(String.format("Food in bigPlate after increase = %s", bigPlate.getFood()));
+
     }
 }

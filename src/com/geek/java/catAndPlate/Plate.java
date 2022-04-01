@@ -15,6 +15,14 @@ public class Plate {
         return true;
     }
 
+    public int getFood() {
+        return food;
+    }
+
+    public void setFood(int food) {
+        this.food = food;
+    }
+
     public boolean increaseFood(int n) {
         if (n < 0) {
             return false;
