@@ -7,11 +7,20 @@ public class Plate {
         this.food = food;
     }
 
-    public void decreaseFood(int n) {
+    public boolean decreaseFood(int n) {
         if (food - n < 0) {
-            return;
+            return false;
         }
         food -= n;
+        return true;
+    }
+
+    public boolean increaseFood(int n) {
+        if (n < 0) {
+            return false;
+        }
+        food += n;
+        return true;
     }
 
     public void info() {
