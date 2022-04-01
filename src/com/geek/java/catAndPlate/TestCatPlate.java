@@ -10,6 +10,8 @@ public class TestCatPlate {
         plate.info();
         cat.satietyInfo();
 
+        System.out.println(">".repeat(32));
+
         Plate bigPlate = new Plate(560);
         Cat[] cats = {
                 new Cat("Manya", 97),
