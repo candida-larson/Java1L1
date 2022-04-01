@@ -8,6 +8,9 @@ public class Plate {
     }
 
     public void decreaseFood(int n) {
+        if (food - n < 0) {
+            return;
+        }
         food -= n;
     }
 
