@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class CounterApp extends JFrame {
     private int counter = 0;
     private final JLabel counterValueView = new JLabel();
-    Font font = new Font("Tahoma", Font.BOLD, 36);
+    Font font = new Font("Arial", Font.BOLD, 36);
 
     public CounterApp() {
         configFrame();
