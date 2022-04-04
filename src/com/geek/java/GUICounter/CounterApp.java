@@ -37,7 +37,7 @@ public class CounterApp extends JFrame {
         incrementButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                changeCounterInView(1);
+                changeCounter(1);
             }
         });
     }
@@ -50,7 +50,7 @@ public class CounterApp extends JFrame {
         decrementButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                changeCounterInView(-1);
+                changeCounter(-1);
             }
         });
     }
@@ -74,7 +74,7 @@ public class CounterApp extends JFrame {
         tenIncButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                changeCounterInView(10);
+                changeCounter(10);
             }
         });
 
@@ -83,7 +83,7 @@ public class CounterApp extends JFrame {
         tenDecButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                changeCounterInView(-10);
+                changeCounter(-10);
             }
         });
 
@@ -104,7 +104,7 @@ public class CounterApp extends JFrame {
         counterValueView.setText(String.valueOf(counter));
     }
 
-    private void changeCounterInView(int offset) {
+    private void changeCounter(int offset) {
         counter += offset;
         counterValueView.setText(String.valueOf(counter));
     }
